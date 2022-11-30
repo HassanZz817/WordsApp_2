@@ -17,6 +17,7 @@ private const val ARG_PARAM2 = "param2"
 private var _binding: FragmentLetterListBinding? = null
 private val binding get() = _binding!!
 private lateinit var recyclerView: RecyclerView
+private lateinit var letterId: String
 
 /**
  * A simple [Fragment] subclass.
@@ -32,6 +33,10 @@ class WordListFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        arguments?.let {
+            letterId = it.getString(LETTER).toString()
+        }
         setHasOptionsMenu(true)
     }
 
@@ -48,7 +53,7 @@ class WordListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
        val recyclerView = binding.recyclerView
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
-        recyclerView.adapter = WordAdapter(activity?.intent?.extras?.getString(LETTER).toString(), requireContext())
+        recyclerView.adapter = WordAdapter(letterId, requireContext())
         recyclerView.addItemDecoration(
             DividerItemDecoration(context, DividerItemDecoration.VERTICAL)
         )

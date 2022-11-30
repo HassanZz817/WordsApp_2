@@ -18,16 +18,10 @@ plugins {
     id 'kotlin-android'
     id 'kotlin-kapt'
     id 'androidx.navigation.safeargs.kotlin'
-
-
 }
-
-
-
 
 android {
     compileSdkVersion 33
-
 
     defaultConfig {
         applicationId "com.example.wordsapp"
@@ -39,42 +33,15 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
-        buildscript {
-            repositories {
-                google()
-            }
-            dependencies {
-                def nav_version = "2.5.0"
-                classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
-            }
-        }
     }
-    buildscript {
-
-        ext{
-            appcompat_version = "1.5.1"
-            constraintlayout_version = "2.1.4"
-            core_ktx_version = "1.9.0"
-            kotlin_version = "1.7.10"
-            material_version = "1.7.0-alpha2"
-            nav_version = "2.5.2"
-        }
-        repositories {
-            google()
-            mavenCentral()
-        }
-        dependencies {
-            classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-
-            classpath("com.android.tools.build:gradle:7.3.1")
-            classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
-        }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     kotlinOptions {
@@ -87,25 +54,10 @@ android {
 }
 
 dependencies {
-
-
-    def nav_version = "2.3.0-alpha01"
-    // Kotlin
-    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
-
-    // Dynamic Feature Module Support
-    implementation "androidx.navigation:navigation-dynamic-features-fragment:$nav_version"
-
-    // Testing Navigation
-    androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
-    implementation("androidx.recyclerview:recyclerview:1.2.1")
-    // For control over item selection of both touch and mouse driven selection
-    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
-    implementation("androidx.navigation:navigation-compose:2.5.3")
-
+    implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
+    implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 }
