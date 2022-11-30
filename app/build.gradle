@@ -17,8 +17,11 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id("androidx.navigation.safeargs")
+    id 'androidx.navigation.safeargs.kotlin'
+
+
 }
+
 
 
 
@@ -53,11 +56,25 @@ android {
         }
     }
     buildscript {
+
+        ext{
+            appcompat_version = "1.5.1"
+            constraintlayout_version = "2.1.4"
+            core_ktx_version = "1.9.0"
+            kotlin_version = "1.7.10"
+            material_version = "1.7.0-alpha2"
+            nav_version = "2.5.2"
+        }
         repositories {
             google()
+            mavenCentral()
         }
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        dependencies {
+            classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+
+            classpath("com.android.tools.build:gradle:7.3.1")
+            classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:1.5.20")
+        }
     }
 
     kotlinOptions {
@@ -82,8 +99,13 @@ dependencies {
 
     // Testing Navigation
     androidTestImplementation "androidx.navigation:navigation-testing:$nav_version"
+    implementation("androidx.recyclerview:recyclerview:1.2.1")
+    // For control over item selection of both touch and mouse driven selection
+    implementation("androidx.recyclerview:recyclerview-selection:1.1.0")
     implementation "androidx.core:core-ktx:$core_ktx_version"
     implementation "androidx.appcompat:appcompat:$appcompat_version"
     implementation "com.google.android.material:material:$material_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraintlayout_version"
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+
 }
