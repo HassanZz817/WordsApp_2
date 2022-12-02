@@ -1,3 +1,11 @@
-The Words app consists of a home screen that shows a list, 
-with each list item being a letter of the alphabet. Clicking a letter navigates to a screen showing a list
-of words that start with that letter.
+# Words App
+
+This folder contains the source code for the Words app codelab.
+
+
+# Introduction
+Words app allows you to select a letter and use Intents to navigate to an Activity that
+presents a number of words starting with that letter. Each word can be looked up via a web search.
+
+Words app contains a scrollable list of 26 letters A to Z in a RecyclerView. The orientation
+of the RecyclerView can be changed between a vertical list or a grid of items.
